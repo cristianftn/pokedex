@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="container mt-5" id="body"> </div>
+            <div class="container-fluid mt-5" id="body"> </div>
     </div>
 
 

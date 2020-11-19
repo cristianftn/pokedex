@@ -55,11 +55,18 @@ function llenarBody(data){
     
         $('#body').empty()
             $('#body').append(`
+
+            <div class="row mt-5">
+                <div class="col  d-flex justify-content-center">
+                    <h1>${PrimeraLetraMayuscula(data.name)}</h1>
+                </div>
+            </div>
             <div class="row">
-                <div class="col ">
-                <h1>${PrimeraLetraMayuscula(data.name)}</h1>
-                <ul class="list-group mt-3">
-                    <li class="list-group-item">Numero de la Pokedex: ${data.order}</li>
+                <div class="col-3">
+                
+                <ul class="list-group mt-4">
+                <li class="list-group-item ">Nombre: ${PrimeraLetraMayuscula(data.name)}</li>
+                    <li class="list-group-item">Numero de la Pokedex: ${data.id}</li>
                     <li class="list-group-item">Tipo: ${arrayTipos.toString().replace(',',', ')}</li>
                 </ul>
 
@@ -71,13 +78,55 @@ function llenarBody(data){
                             <img src="${data.sprites.front_default}" width="245" height="350">
                         </div>
                         <div class="col">
-                        <img src="${data.sprites.back_default}" width="245" height="350">
-                    </div>
+                            <img src="${data.sprites.back_default}" width="245" height="350">
+                        </div>
+                        <div class="col">
+                            <img src="${data.sprites.front_shiny}" width="245" height="350">
+                        </div>
+                        <div class="col">
+                            <img src="${data.sprites.back_shiny}" width="245" height="350">
+                        </div>
                     </div>
                 </div>
             </div>
 
             `);
+
+ 
+        // <div class="row ">
+        //     <div class="col-3">
+            
+        //     <ul class="list-group mt-4">
+        //         <li class="list-group-item ">Nombre: ${PrimeraLetraMayuscula(data[i].name)}</li>
+        //         <li class="list-group-item ">Numero de la Pokedex: ${data[i].order}</li>
+        //         <li class="list-group-item ">Tipo: ${data[i].types.type}</li>
+        //     </ul>
+
+        //     </div>
+                
+        //     <div class="col">
+        //         <div class="row">
+        //             <div class="col">
+        //                 <img src="${data[i].sprites.front_default}" width="245" height="350">
+        //             </div>
+        //             <div class="col">
+        //                 <img src="${data[i].sprites.back_default}" width="245" height="350">
+        //             </div>
+        //             <div class="col">
+        //             <img src="${data[i].sprites.front_shiny}" width="245" height="350">
+        //         </div>
+        //         <div class="col">
+        //             <img src="${data[i].sprites.back_shiny}" width="245" height="350">
+        //         </div>
+        //         </div>
+        //     </div>
+        // </div>
+        // <hr>
+
+
+
+
+            
     }
     
 }
@@ -139,28 +188,43 @@ function llenarBodyPokedex(data){
        
 
         $('#body').append(`
-        <div class="row">
-            <div class="col ">
-            <h1>${PrimeraLetraMayuscula(data[i].name)}</h1>
-            <ul class="list-group mt-3">
-                <li class="list-group-item">Numero de la Pokedex: ${data[i].order}</li>
-                <li class="list-group-item">Tipo: ${data[i].types.type}</li>
-            </ul>
 
+
+            <div class="row mt-5">
+                <div class="col  d-flex justify-content-center">
+                    <h1>${PrimeraLetraMayuscula(data[i].name)}</h1>
+                </div>
             </div>
+
+            <div class="row ">
+                <div class="col-3">
                 
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <img src="${data[i].sprites.front_default}" width="245" height="350">
+                <ul class="list-group mt-4">
+                    <li class="list-group-item ">Nombre: ${PrimeraLetraMayuscula(data[i].name)}</li>
+                    <li class="list-group-item ">Numero de la Pokedex: ${data[i].id}</li>
+                    <li class="list-group-item ">Tipo: ${data[i].types.type}</li>
+                </ul>
+
+                </div>
+                    
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <img src="${data[i].sprites.front_default}" width="245" height="350">
+                        </div>
+                        <div class="col">
+                            <img src="${data[i].sprites.back_default}" width="245" height="350">
+                        </div>
+                        <div class="col">
+                        <img src="${data[i].sprites.front_shiny}" width="245" height="350">
                     </div>
                     <div class="col">
-                    <img src="${data[i].sprites.back_default}" width="245" height="350">
-                </div>
+                        <img src="${data[i].sprites.back_shiny}" width="245" height="350">
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
+            <hr>
         `)
         
     }
