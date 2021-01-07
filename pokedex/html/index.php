@@ -30,7 +30,7 @@
 
             <div class="container-fluid mt-5" id="body"> </div>
 
-            <a href="https://wa.me/+34633276957?text=vale%20tronca" id='botonWatsapp' target="_blank"><img src="../../whatsapp-icon.png" alt=""></a>
+            <a href="https://wa.me/+34633276957" id='botonWatsapp' target="_blank"><img src="../../whatsapp-icon.png" alt=""></a>
             <!-- <div class="container-fluidm mt-5" id="body"> 
                 <input list="browsers" name="browser" id="browser">
                 <datalist id="browsers">

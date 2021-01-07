@@ -7,10 +7,11 @@ $(document).ready(function() {
         buscaPokemon(pokemon);
     })
 
-    $('#botonWatsapp').click(function(){
+    $('#botonWatsapp').click(function(e){
         let TextoPokemon = $('#pokemonTexto').val().toLowerCase();
         let TextoPokemonFormateado = TextoPokemon.replaceAll(' ', '%20')
-        alert(TextoPokemon)
+        //e.preventDefault();
+        window.open(this.href+"?text="+TextoPokemonFormateado, '_blank');
     })
 
 
