@@ -6,8 +6,33 @@ $(document).ready(function() {
         let pokemon = $('#pokemonTexto').val().toLowerCase();
         buscaPokemon(pokemon);
     })
+
+    $('#botonWatsapp').click(function(){
+        let TextoPokemon = $('#pokemonTexto').val().toLowerCase();
+        let TextoPokemonFormateado = TextoPokemon.replaceAll(' ', '%20')
+        alert(TextoPokemon)
+    })
+
+
     
-});
+
+//dataList que espera 3 segundos antes de lanzar la peticion, falta hacer que devuelva resultados solo con escribir parte del nombre del pokemon
+    
+        // let timeout
+        // document.getElementById("browser").addEventListener('keyup', () => {
+        //     clearTimeout(timeout)
+        //     timeout = setTimeout(() => {
+        //         if($('#browser').val() != ''){
+        //             let pokemon = $('#browser').val().toLowerCase();
+        //             buscaPokemon(pokemon);
+        //         }
+        //         clearTimeout(timeout)
+        //     },3000)
+        // })
+      
+})
+
+
 
 
 async function buscaPokemon(pokemon){
@@ -27,7 +52,7 @@ async function buscaPokemon(pokemon){
           }
     }else{
         
-        let url = 'https://pokeapi.co/api/v2/pokemon/?limit=151'
+        let url = 'https://pokeapi.co/api/v2/pokemon/?limit=5'
 
         try {
             const response = await fetch(url)
@@ -58,14 +83,14 @@ function llenarBody(data){
 
             <div class="row mt-5">
                 <div class="col  d-flex justify-content-center">
-                    <h1>${PrimeraLetraMayuscula(data.name)}</h1>
+                    <h1>${primeraLetraMayuscula(data.name)}</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-3">
                 
                 <ul class="list-group mt-4">
-                <li class="list-group-item ">Nombre: ${PrimeraLetraMayuscula(data.name)}</li>
+                <li class="list-group-item ">Nombre: ${primeraLetraMayuscula(data.name)}</li>
                     <li class="list-group-item">Numero de la Pokedex: ${data.id}</li>
                     <li class="list-group-item">Tipo: ${arrayTipos.toString().replace(',',', ')}</li>
                 </ul>
@@ -91,42 +116,7 @@ function llenarBody(data){
             </div>
 
             `);
-
- 
-        // <div class="row ">
-        //     <div class="col-3">
-            
-        //     <ul class="list-group mt-4">
-        //         <li class="list-group-item ">Nombre: ${PrimeraLetraMayuscula(data[i].name)}</li>
-        //         <li class="list-group-item ">Numero de la Pokedex: ${data[i].order}</li>
-        //         <li class="list-group-item ">Tipo: ${data[i].types.type}</li>
-        //     </ul>
-
-        //     </div>
-                
-        //     <div class="col">
-        //         <div class="row">
-        //             <div class="col">
-        //                 <img src="${data[i].sprites.front_default}" width="245" height="350">
-        //             </div>
-        //             <div class="col">
-        //                 <img src="${data[i].sprites.back_default}" width="245" height="350">
-        //             </div>
-        //             <div class="col">
-        //             <img src="${data[i].sprites.front_shiny}" width="245" height="350">
-        //         </div>
-        //         <div class="col">
-        //             <img src="${data[i].sprites.back_shiny}" width="245" height="350">
-        //         </div>
-        //         </div>
-        //     </div>
-        // </div>
-        // <hr>
-
-
-
-
-            
+      
     }
     
 }
@@ -170,29 +160,42 @@ function llenarBodyPokedex(data){
     //data.forEach(element => console.log(element))
 
     let arrayTipoPokemons = []
-
+    let objetoTipos =  {}
+    let tipo = []
+    
     for (let i = 0; i < data.length; i++) {
 
-        console.log(data[i])
-        //console.log(data[i].types)
+    //   console.log(data[i].types)
+        
+      
+    //   data[i].types.forEach(element => tipo = element.type.name , console.log(element))
 
-        // for (let x = 0; x <= data[i].types.length; x++) {
-        //     console.log(data[i].types[x])
+    data[i].types.forEach(element =>  tipo.push(element.type.name))
+
+       //console.log(tipo)
             
-        // }
         
         
-        // arrayTipoPokemons.push(data[i].types)
-        //console.log(arrayTipoPokemons)
+         //console.log(tipo)
 
-       
+          objetoTipos = tipo
+
+        //  console.log(objetoTipos)
+
+          arrayTipoPokemons.push(objetoTipos)
+
+        
+          
+     
+
+
 
         $('#body').append(`
 
 
             <div class="row mt-5">
                 <div class="col  d-flex justify-content-center">
-                    <h1>${PrimeraLetraMayuscula(data[i].name)}</h1>
+                    <h1>${primeraLetraMayuscula(data[i].name)}</h1>
                 </div>
             </div>
 
@@ -200,7 +203,7 @@ function llenarBodyPokedex(data){
                 <div class="col-3">
                 
                 <ul class="list-group mt-4">
-                    <li class="list-group-item ">Nombre: ${PrimeraLetraMayuscula(data[i].name)}</li>
+                    <li class="list-group-item ">Nombre: ${primeraLetraMayuscula(data[i].name)}</li>
                     <li class="list-group-item ">Numero de la Pokedex: ${data[i].id}</li>
                     <li class="list-group-item ">Tipo: ${data[i].types.type}</li>
                 </ul>
@@ -229,9 +232,10 @@ function llenarBodyPokedex(data){
         
     }
         
-        
+ 
 
-
+    // console.log('array de tipos')
+    // console.log(arrayTipoPokemons)
     
 
    
