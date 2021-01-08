@@ -10,8 +10,9 @@ $(document).ready(function() {
     $('#botonWatsapp').click(function(e){
         let TextoPokemon = $('#pokemonTexto').val().toLowerCase();
         let TextoPokemonFormateado = TextoPokemon.replaceAll(' ', '%20')
-        //e.preventDefault();
+        e.preventDefault();
         window.open(this.href+"?text="+TextoPokemonFormateado, '_blank');
+
     })
 
 
