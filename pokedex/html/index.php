@@ -1,3 +1,16 @@
+<?php require_once('../conexionBBDD/conexion.php'); ?>
+<?php 
+
+
+$videojuego = mysqli_query($conexion, "SELECT v.*, vc.* FROM videojuegos v JOIN videojuego_caracteristicas vc ON v.id_videojuego = vc.id_videojuego WHERE v.Nombre='Cuphead'");
+$atributos = mysqli_query($conexion, "SELECT * FROM videojuegos v JOIN videojuego_atributos va ON  v.id_videojuego = va.id_videojuego WHERE v.Nombre = 'Cuphead'");
+$pros = mysqli_query($conexion, "SELECT * FROM videojuegos v JOIN videojuego_pros_contras vpc  ON v.id_videojuego = vpc.id_videojuego WHERE v.Nombre = 'Cuphead' AND vpc.Tipo_pro_contra = 'pro'");
+$contras = mysqli_query($conexion, "SELECT * FROM videojuegos v JOIN videojuego_pros_contras vpc  ON v.id_videojuego = vpc.id_videojuego WHERE v.Nombre = 'Cuphead' AND vpc.Tipo_pro_contra = 'contra'");
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,6 +40,20 @@
                     </div>
                 </div>
             </div>
+
+
+            <form action="layout.php" method="get">
+            <div class="container mt-5 ">
+                <div class="col mt-5">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="texto" name="nombre" placeholder="Escribe el nombre">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
 
             <div class="container-fluid mt-5" id="body"> </div>
 
